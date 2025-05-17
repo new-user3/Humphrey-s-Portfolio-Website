@@ -1,382 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="mediaqueries.css" />
-  </head>
-  <body>
-    <nav id="desktop-nav">
-      <div class="logo">Humphrey</div>
-      <div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Humphrey Kyalo - Software Engineer specializing in building scalable solutions with clean code. Explore my projects and experience.">
+    <meta name="keywords" content="Software Engineer, Web Developer, Humphrey Kyalo, Portfolio, JavaScript, React, Node.js">
+    <title>Humphrey Kyalo | Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tech-icon:hover {
+            transform: scale(1.1);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center">
+                        <span class="text-white font-bold">HK</span>
+                    </div>
+                    <span class="font-bold text-lg">Humphrey Kyalo</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-blue-600">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-blue-600">About</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">Projects</a>
+                    <a href="#resume" class="nav-link text-gray-600 hover:text-blue-600">Resume</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-blue-600">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 focus:outline-none">
+                        <i class="fas fa-bars text-gray-600 text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-white py-2 px-4 border-t">
+            <a href="#home" class="block py-2 text-gray-600 hover:text-blue-600">Home</a>
+            <a href="#about" class="block py-2 text-gray-600 hover:text-blue-600">About</a>
+            <a href="#projects" class="block py-2 text-gray-600 hover:text-blue-600">Projects</a>
+            <a href="#resume" class="block py-2 text-gray-600 hover:text-blue-600">Resume</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Humphrey</div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="max-w-6xl mx-auto px-4 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Hi, I'm <span class="gradient-text">Humphrey Kyalo</span></h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">Software Engineer</h2>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg">Building scalable solutions with clean, efficient code. Passionate about creating impactful digital experiences.</p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="gradient-bg hover:opacity-90 text-white font-medium py-3 px-6 rounded-lg transition duration-300">View My Work</a>
+                        <a href="#resume" class="border-2 border-blue-500 text-blue-500 font-medium py-3 px-6 rounded-lg hover:bg-blue-500 hover:text-white transition duration-300">Download CV</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full gradient-bg flex items-center justify-center">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Humphrey Kyalo" class="w-60 h-60 md:w-72 md:h-72 rounded-full object-cover" loading="lazy">
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-full shadow-lg">
+                            <div class="w-12 h-12 rounded-full gradient-bg flex items-center justify-center">
+                                <i class="fas fa-code text-white text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
-      </div>
-    </nav>
-    <section id="profile">
-      <div class="section__pic-container">
-        <img src="./assets/profile-pic.png" alt="John Doe profile picture" />
-      </div>
-      <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Humphrey</h1>
-        <p class="section__text__p2">Frontend Developer</p>
-        <div class="btn-container">
-          <button
-            class="btn btn-color-2"
-            onclick="window.open('./assets/resume-example.pdf')"
-          >
-            Download CV
-          </button>
-          <button class="btn btn-color-1" onclick="location.href='./#contact'">
-            Contact Info
-          </button>
-        </div>
-        <div id="socials-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="My LinkedIn profile"
-            class="icon"
-            onclick="location.href='https://linkedin.com/'"
-          />
-          <img
-            src="./assets/github.png"
-            alt="My Github profile"
-            class="icon"
-            onclick="location.href='https://github.com/'"
-          />
-        </div>
-      </div>
     </section>
-    <section id="about">
-      <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title">About Me</h1>
-      <div class="section-container">
-        <div class="section__pic-container">
-          <img
-            src="./assets/about-pic.png"
-            alt="Profile picture"
-            class="about-pic"
-          />
-        </div>
-        <div class="about-details-container">
-          <div class="about-containers">
-            <div class="details-container">
-              <img
-                src="./assets/experience.png"
-                alt="Experience icon"
-                class="icon"
-              />
-              <h3>Experience</h3>
-              <p>2+ years <br />Frontend Development</p>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white section">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
             </div>
-            <div class="details-container">
-              <img
-                src="./assets/education.png"
-                alt="Education icon"
-                class="icon"
-              />
-              <h3>Education</h3>
-              <p>B.Sc. Bachelors Degree<br />M.Sc. Masters Degree</p>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Who I Am</h3>
+                    <p class="text-gray-600 mb-6">I'm a passionate Software Engineer with 5+ years of experience in building web applications and scalable systems. I specialize in JavaScript technologies across the stack, with a strong focus on creating efficient, maintainable code.</p>
+                    <p class="text-gray-600 mb-6">My approach combines technical expertise with creative problem-solving to deliver solutions that are both robust and user-friendly. I'm constantly learning and adapting to new technologies to stay at the forefront of the industry.</p>
+                    <p class="text-gray-600">When I'm not coding, you can find me contributing to open-source projects, mentoring junior developers, or exploring new hiking trails.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center md:text-left">My Skills</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-js text-yellow-400 text-4xl mb-2"></i>
+                            <span class="text-gray-700">JavaScript</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-react text-blue-500 text-4xl mb-2"></i>
+                            <span class="text-gray-700">React</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-node-js text-green-500 text-4xl mb-2"></i>
+                            <span class="text-gray-700">Node.js</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-python text-blue-600 text-4xl mb-2"></i>
+                            <span class="text-gray-700">Python</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fas fa-database text-blue-400 text-4xl mb-2"></i>
+                            <span class="text-gray-700">MongoDB</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-aws text-orange-500 text-4xl mb-2"></i>
+                            <span class="text-gray-700">AWS</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-docker text-blue-300 text-4xl mb-2"></i>
+                            <span class="text-gray-700">Docker</span>
+                        </div>
+                        <div class="tech-icon flex flex-col items-center p-4 rounded-lg bg-gray-50 hover:bg-white transition duration-300 cursor-pointer">
+                            <i class="fab fa-git-alt text-orange-600 text-4xl mb-2"></i>
+                            <span class="text-gray-700">Git</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="text-container">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-              reprehenderit et laborum, rem, dolore eum quod voluptate
-              exercitationem nobis, nihil esse debitis maxime facere minus sint
-              delectus velit in eos quo officiis explicabo deleniti dignissimos.
-              Eligendi illum libero dolorum cum laboriosam corrupti quidem,
-              reiciendis ea magnam? Nulla, impedit fuga!
-            </p>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section>
-    <section id="experience">
-      <p class="section__text__p1">Explore My</p>
-      <h1 class="title">Experience</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>HTML</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>CSS</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>SASS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>JavaScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>TypeScript</h3>
-                  <p>Basic</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Material UI</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50 section">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">My Projects</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
             </div>
-          </div>
-          <div class="details-container">
-            <h2 class="experience-sub-title">Frontend Development</h2>
-            <div class="article-container">
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>PostgreSQL</h3>
-                  <p>Basic</p>
+            
+            <div class="mb-8 flex justify-center">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button onclick="filterProjects('all')" class="px-4 py-2 text-sm font-medium rounded-l-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                        All
+                    </button>
+                    <button onclick="filterProjects('web')" class="px-4 py-2 text-sm font-medium border-t border-b border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                        Web Apps
+                    </button>
+                    <button onclick="filterProjects('api')" class="px-4 py-2 text-sm font-medium rounded-r-md border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500">
+                        APIs
+                    </button>
                 </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Node JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Express JS</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3>Git</h3>
-                  <p>Intermediate</p>
-                </div>
-              </article>
             </div>
-          </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-container">
+                <!-- Project 1 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Dashboard" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">E-commerce Dashboard</h3>
+                        <p class="text-gray-600 mb-4">A comprehensive admin dashboard for e-commerce businesses with analytics, inventory management, and order processing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="api">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Payment Gateway API" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Payment Gateway API</h3>
+                        <p class="text-gray-600 mb-4">A secure RESTful API for processing online payments with support for multiple payment providers and currencies.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">Express</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">PostgreSQL</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-book"></i> Docs</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Collaboration Platform" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Team Collaboration Platform</h3>
+                        <p class="text-gray-600 mb-4">A real-time collaboration tool for remote teams featuring chat, video calls, and project management.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-500 text-white px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-gray-800 text-white px-2 py-1 rounded">Next.js</span>
+                            <span class="text-xs bg-green-500 text-white px-2 py-1 rounded">Socket.io</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="api">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Authentication Service" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Authentication Microservice</h3>
+                        <p class="text-gray-600 mb-4">A scalable authentication service with JWT, OAuth 2.0, and multi-factor authentication support.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">TypeScript</span>
+                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Redis</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-book"></i> Docs</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Health Tracker" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Health & Fitness Tracker</h3>
+                        <p class="text-gray-600 mb-4">A mobile-first web app for tracking workouts, nutrition, and health metrics with data visualization.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">React</span>
+                            <span class="text-xs bg-pink-100 text-pink-800 px-2 py-1 rounded">GraphQL</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Firebase</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300" data-category="api">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Data Processing" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Data Processing Pipeline</h3>
+                        <p class="text-gray-600 mb-4">A high-performance data processing system for large datasets with real-time analytics capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Python</span>
+                            <span class="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">Apache Kafka</span>
+                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">AWS Lambda</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fas fa-book"></i> Docs</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
-    <section id="projects">
-      <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title">Projects</h1>
-      <div class="experience-details-container">
-        <div class="about-containers">
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-1.png"
-                alt="Project 1"
-                class="project-img"
-              />
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-white section">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">My Resume</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
             </div>
-            <h2 class="experience-sub-title project-title">Project One</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/new-user3/chat_app-2.0'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://chat-app-2-0-l845.onrender.com/'"
-              >
-                Live Demo
-              </button>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/3 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-gray-50 p-6 rounded-xl shadow-sm sticky top-20">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Download CV</h3>
+                        <p class="text-gray-600 mb-6">Get a complete overview of my professional experience, education, and skills.</p>
+                        <a href="#" class="gradient-bg hover:opacity-90 text-white font-medium py-3 px-6 rounded-lg transition duration-300 inline-block w-full text-center" download="Humphrey_Kyalo_CV.pdf">
+                            <i class="fas fa-download mr-2"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="md:w-2/3">
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">Experience</h3>
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-semibold text-gray-800">Senior Software Engineer</h4>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2021 - Present</span>
+                            </div>
+                            <p class="text-gray-600 font-medium mb-2">TechSolutions Inc.</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                                <li>Led a team of 5 developers in building a scalable SaaS platform serving 50,000+ users</li>
+                                <li>Architected and implemented microservices architecture reducing API response times by 40%</li>
+                                <li>Introduced comprehensive testing practices increasing code coverage from 65% to 92%</li>
+                                <li>Mentored junior developers through code reviews and technical workshops</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-semibold text-gray-800">Software Developer</h4>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2018 - 2021</span>
+                            </div>
+                            <p class="text-gray-600 font-medium mb-2">Digital Innovations Ltd.</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                                <li>Developed and maintained 10+ client web applications using React and Node.js</li>
+                                <li>Optimized database queries reducing page load times by an average of 30%</li>
+                                <li>Implemented CI/CD pipelines reducing deployment times from 15 minutes to 2 minutes</li>
+                                <li>Collaborated with UX designers to improve user experience across all products</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-semibold text-gray-800">Junior Developer</h4>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2016 - 2018</span>
+                            </div>
+                            <p class="text-gray-600 font-medium mb-2">WebCraft Studios</p>
+                            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                                <li>Built responsive websites and web applications for small business clients</li>
+                                <li>Assisted in migrating legacy systems to modern JavaScript frameworks</li>
+                                <li>Participated in agile development processes including daily standups and sprint planning</li>
+                                <li>Developed internal tools automating repetitive tasks saving 10+ hours weekly</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b pb-2">Education</h3>
+                        
+                        <div class="mb-8">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-semibold text-gray-800">MSc in Computer Science</h4>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2014 - 2016</span>
+                            </div>
+                            <p class="text-gray-600 font-medium">University of Technology</p>
+                            <p class="text-gray-500">Specialization in Distributed Systems</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="text-xl font-semibold text-gray-800">BSc in Software Engineering</h4>
+                                <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">2010 - 2014</span>
+                            </div>
+                            <p class="text-gray-600 font-medium">State University</p>
+                            <p class="text-gray-500">Graduated with First Class Honors</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-2.png"
-                alt="Project 2"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Two</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
-          <div class="details-container color-container">
-            <div class="article-container">
-              <img
-                src="./assets/project-3.png"
-                alt="Project 3"
-                class="project-img"
-              />
-            </div>
-            <h2 class="experience-sub-title project-title">Project Three</h2>
-            <div class="btn-container">
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Github
-              </button>
-              <button
-                class="btn btn-color-2 project-btn"
-                onclick="location.href='https://github.com/'"
-              >
-                Live Demo
-              </button>
-            </div>
-          </div>
         </div>
-      </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
-    <section id="contact">
-      <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
-        <div class="contact-info-container">
-          <img
-            src="./assets/email.png"
-            alt="Email icon"
-            class="icon contact-icon email-icon"
-          />
-          <p><a href="mailto:kyalohumphrey1@gmail.com">kyalohumphrey1@gmail.com</a></p>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 section">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto"></div>
+                <p class="text-xl text-gray-600 mt-4 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you!</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 bg-blue-600 text-white p-12">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold">Email Me</h4>
+                                    <a href="mailto:hello@humphreykyalo.com" class="hover:underline">hello@humphreykyalo.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold">Call Me</h4>
+                                    <a href="tel:+254700123456" class="hover:underline">+254 700 123 456</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold">Location</h4>
+                                    <p>Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <h4 class="font-bold mb-4">Connect With Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-500 hover:bg-blue-400 flex items-center justify-center transition duration-300" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition duration-300" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-400 hover:bg-blue-300 flex items-center justify-center transition duration-300" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-orange-500 hover:bg-orange-400 flex items-center justify-center transition duration-300" aria-label="Stack Overflow">
+                                    <i class="fab fa-stack-overflow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/2 p-12">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Send Me a Message</h3>
+                        <form id="contactForm" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                            </div>
+                            <button type="submit" class="gradient-bg hover:opacity-90 text-white font-bold py-3 px-6 rounded-lg transition duration-300 w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="contact-info-container">
-          <img
-            src="./assets/linkedin.png"
-            alt="LinkedIn icon"
-            class="icon contact-icon"
-          />
-          <p><a href="https://www.linkedin.com">LinkedIn</a></p>
-        </div>
-      </div>
     </section>
-    <footer>
-      <nav>
-        <div class="nav-links-container">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-full gradient-bg flex items-center justify-center">
+                            <span class="text-white font-bold">HK</span>
+                        </div>
+                        <span class="font-bold text-lg">Humphrey Kyalo</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">Building digital solutions that make an impact.</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white transition">Projects</a>
+                    <a href="#resume" class="text-gray-400 hover:text-white transition">Resume</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="year"></span> Humphrey Kyalo. All rights reserved.</p>
+            </div>
         </div>
-      </nav>
-      <p>Copyright &#169; 2023 John Doe. All Rights Reserved.</p>
     </footer>
-    <script src="script.js"></script>
-  </body>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl max-w-md w-full mx-4 p-8 text-center">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-green-500 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Message Sent!</h3>
+            <p class="text-gray-600 mb-6">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+            <button onclick="hideSuccessModal()" class="gradient-bg hover:opacity-90 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-button').addEventListener('click', function() {
+            document.querySelector('.mobile-menu').classList.toggle('hidden');
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Project filtering
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-card');
+            
+            projects.forEach(project => {
+                if (category === 'all' || project.dataset.category === category) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success modal
+            document.getElementById('successModal').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Hide success modal
+        function hideSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+        // Simulate CV download
+        document.querySelector('a[download]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('CV download would start here. In a real implementation, this would download the PDF file.');
+        });
+    </script>
+</body>
 </html>
